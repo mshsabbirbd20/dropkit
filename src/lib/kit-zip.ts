@@ -24,7 +24,12 @@ function promptsMarkdown(pack: LearningPack) {
     .join("\n---\n\n");
 }
 
-function readmeMarkdown(pack: LearningPack, folder: string, skillDir: string) {
+function readmeMarkdown(
+  pack: LearningPack,
+  folder: string,
+  skillDir: string,
+  topicSlug: string
+) {
   return `# ${pack.title}
 
 ${pack.projectBrief}
@@ -67,7 +72,7 @@ export async function buildKitZip(pack: LearningPack): Promise<{
   const zip = new JSZip();
   const root = zip.folder(folder)!;
 
-  root.file("README.md", readmeMarkdown(pack, folder, skillDir));
+  root.file("README.md", readmeMarkdown(pack, folder, skillDir, topicSlug));
   root.file("PROMPTS.md", `# ${pack.title} — Lesson prompts\n\nCopy one step at a time into the Cursor Agent.\n\n---\n\n${promptsMarkdown(pack)}`);
 
   const rules = root.folder(".cursor")!.folder("rules")!;
