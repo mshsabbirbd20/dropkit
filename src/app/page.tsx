@@ -106,15 +106,15 @@ const steps = [
   {
     n: "02",
     title: "Get a ready-made kit",
-    body: "DropKit builds three small files for you: a teaching rule, a skill, and lesson prompts Cursor can follow.",
-    tip: "No setup required",
+    body: "DropKit builds a downloadable folder for you: teaching rule, skill, and lesson prompts — ready to open in Cursor.",
+    tip: "One zip = your whole kit",
     Icon: IconKit,
   },
   {
     n: "03",
     title: "Paste into Cursor & learn",
-    body: "Copy them into your project, open the Agent, and learn by building a tiny real project — step by step.",
-    tip: "Build while you learn",
+    body: "Download the zip, open the folder in Cursor, paste Step 1 into the Agent, and learn by building a tiny real project.",
+    tip: "Open folder → start learning",
     Icon: IconCursor,
   },
 ];
@@ -171,8 +171,9 @@ export default function Home() {
           </p>
           <p className="mt-5 max-w-lg text-base leading-relaxed text-paper-dim sm:text-lg">
             Learning to code is hard when the AI just pastes finished code.
-            DropKit turns your goal into a tiny teaching kit — so Cursor guides
-            you like a mentor, while you build a real mini project.
+            DropKit turns your goal into a <strong className="text-paper">downloadable folder</strong> —
+            teaching rule, skill, and prompts inside. Open that folder in Cursor
+            and learn by building a real mini project.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link

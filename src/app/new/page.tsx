@@ -52,8 +52,8 @@ export default function NewPack() {
         What do you want to learn?
       </h1>
       <p className="mt-3 text-base leading-relaxed text-paper-dim">
-        Write it like you’d message a friend. Example: “I’m new to coding —
-        teach me how websites talk to a server.”
+        Write it like you’d message a friend. DropKit builds a downloadable
+        folder — open it in Cursor and learn by building.
       </p>
 
       <form onSubmit={handleSubmit} className="mt-8 space-y-8">
@@ -148,7 +148,7 @@ export default function NewPack() {
           disabled={loading}
           className="w-full bg-accent py-3.5 text-base font-semibold text-ink transition hover:bg-accent-deep disabled:opacity-60"
         >
-          {loading ? "Building your kit…" : "Create my kit"}
+          {loading ? "Building your kit folder…" : "Create my kit folder"}
         </button>
         <p className="text-center text-xs text-paper-dim">
           Next you’ll see install steps you can follow even if you’re brand new
