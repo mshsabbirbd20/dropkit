@@ -19,7 +19,9 @@ export default function DownloadKitButton({
     setError(null);
     try {
       const { filename, bytes } = await buildKitZip(pack);
-      const blob = new Blob([bytes], { type: "application/zip" });
+      const blob = new Blob([bytes.buffer as ArrayBuffer], {
+        type: "application/zip",
+      });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
