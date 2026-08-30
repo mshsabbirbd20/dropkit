@@ -1,26 +1,73 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #141612;
+  --ink-raised: #1b1d18;
+  --ink-gutter: #10120e;
+  --ink-border: #32362c;
+  --paper: #e6ead8;
+  --paper-dim: #8d937c;
+  --accent: #c8f542;
+  --accent-deep: #a6d12a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-ink: var(--ink);
+  --color-ink-raised: var(--ink-raised);
+  --color-ink-gutter: var(--ink-gutter);
+  --color-ink-border: var(--ink-border);
+  --color-paper: var(--paper);
+  --color-paper-dim: var(--paper-dim);
+  --color-accent: var(--accent);
+  --color-accent-deep: var(--accent-deep);
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-grotesk);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body {
+  background-color: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-grotesk), system-ui, sans-serif;
+  background-image:
+    repeating-linear-gradient(
+      to right,
+      transparent 0,
+      transparent 47px,
+      rgba(200, 245, 66, 0.035) 47px,
+      rgba(200, 245, 66, 0.035) 48px
+    );
+  background-size: 48px 100%;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.font-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+@keyframes drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.drop-in {
+  animation: drop-in 0.5s ease-out both;
+}
+
+.drop-in-2 {
+  animation: drop-in 0.5s ease-out 0.1s both;
+}
+
+.drop-in-3 {
+  animation: drop-in 0.5s ease-out 0.2s both;
 }

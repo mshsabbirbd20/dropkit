@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DropKit — drop a kit into Cursor instantly
 
-## Getting Started
+Paste a learning goal. DropKit generates an installable **kit** — a teaching rule for `.cursor/rules`, a `SKILL.md`, and an ordered Agent prompt sequence — that you drop straight into Cursor.
 
-First, run the development server:
+## Run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Env (`.env.local`)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+GROQ_API_KEY=...
+STRIPE_SECRET_KEY=sk_test_...
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
 
-## Learn More
+Without Groq, a built-in demo kit is served. Stripe Checkout needs the secret key.
 
-To learn more about Next.js, take a look at the following resources:
+## Stripe Checkout
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`/pricing` → Pro / Classroom / marketplace kits → Stripe hosted Checkout → `/success`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Test card: `4242 4242 4242 4242`
 
-## Deploy on Vercel
+## Stripe Projects (hackathon)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Code: `stripe-dhaka-aievent2026`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+stripe login
+stripe whoami
+stripe projects init dropkit --yes
+stripe projects share
+```
+
+## Compliance
+
+- Brand: **DropKit** — descriptive “for Cursor” phrasing only; not affiliated with Anysphere / Cursor.
+- Kits are teaching content only (no shell / network / out-of-project file access).
