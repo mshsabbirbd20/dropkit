@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { cachePack } from "@/lib/pack-cache";
 
 const exampleGoals = [
   {
@@ -38,6 +39,7 @@ export default function NewPack() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Something went wrong.");
+      if (data.pack) cachePack(data.pack);
       router.push(`/pack/${data.id}`);
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");

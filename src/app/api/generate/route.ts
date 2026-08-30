@@ -17,5 +17,5 @@ export async function POST(request: Request) {
 
   const pack = await generatePack(goal, level, hours);
   await savePack(pack);
-  return NextResponse.json({ id: pack.id });
+  return NextResponse.json({ id: pack.id, pack });
 }

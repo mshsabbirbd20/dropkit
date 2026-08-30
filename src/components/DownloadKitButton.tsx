@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import type { LearningPack } from "@/lib/types";
+import { buildKitZip } from "@/lib/kit-zip";
 
 export default function DownloadKitButton({
-  packId,
+  pack,
   label = "Download kit folder (.zip)",
 }: {
-  packId: string;
+  pack: LearningPack;
   label?: string;
 }) {
   const [loading, setLoading] = useState(false);
@@ -16,20 +18,12 @@ export default function DownloadKitButton({
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`/api/download/${packId}`);
-      if (!res.ok) {
-        const data = await res.json().catch(() => null);
-        throw new Error(data?.error ?? "Download failed.");
-      }
-      const blob = await res.blob();
-      const cd = res.headers.get("Content-Disposition") ?? "";
-      const match = cd.match(/filename="([^"]+)"/);
-      const name = match?.[1] ?? `dropkit-${packId}.zip`;
-
+      const { filename, bytes } = await buildKitZip(pack);
+      const blob = new Blob([bytes], { type: "application/zip" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = name;
+      a.download = filename;
       document.body.appendChild(a);
       a.click();
       a.remove();
